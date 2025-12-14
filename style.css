@@ -81,6 +81,7 @@ form {
   font-weight: bold;
   transition: all 0.3s ease-in-out;
   background: linear-gradient(115deg, var(--color-mid-red), var(--color-gold));
+  user-select: none;
 }
 
 .add-btn:hover {
