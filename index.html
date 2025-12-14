@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Library</h1>
+  
+<form action="">
+  <label for="">
+    Book: <input class="input" type="text" required placeholder="Title">
+  </label>
+  <label for="">
+   Author: <input class="input" type="text" required placeholder="Name">
+  </label>
+  <label for="">
+    Page: <input class="input" type="number" required placeholder="Total">
+  </label>
+  <button class="add-btn">Add Book</button>
+</form>
+
+<div class="stats">
+  <p>Total: <span id="total">0</span></p>
+  <p>Read: <span id="read">0</span></p>
+  <p>Unread: <span id="unread">0</span></p>
+</div>
+
+<div class="books">
+  <div class="book">
+    <div class="book-title">
+      <h2>Rich Dad Poor Dad</h2>
+    </div>
+    <div class="book-author">
+      <h3><span>by</span> Robert Kiyosaki</h3>
+    </div>
+    <div class="book-page-book-status">
+      <label class="read-lable" for="checkbox">Not Read:
+        <input type="checkbox" id="checkbox">
+      </label>
+      <p title="Page">241</p>
+      <button class="remove-btn" title="Remove">Remove</button>
+    </div>
+  </div>
+</div>
+    <script src="script.js"></script>
+  </body>
+</html>
