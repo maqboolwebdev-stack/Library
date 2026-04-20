@@ -1,0 +1,1 @@
+alert('hey! is every thing is okay!')
