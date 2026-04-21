@@ -4,8 +4,51 @@ const pageInput = document.querySelector('.page');
 const statusInput = document.querySelector('.status');
 const submitBtn = document.querySelector('.submit-btn');
 const container = document.querySelector('.books-container');
+const dialog = document.querySelector('dialog');
 
 const myLibrary = [];
+
+function seedLibrary() {
+    const defaultBooks = [
+        {
+            title: "Atomic Habits",
+            author: "James Clear",
+            pages: 320,
+            read: true
+        },
+        {
+            title: "Deep Work",
+            author: "Cal Newport",
+            pages: 280,
+            read: false
+        },
+        {
+            title: "Think like a Programmer",
+            author: "V. Anton Sprual",
+            pages: 260,
+            read: true
+        },
+        {
+            title: " Eloquent JavaScript",
+            author: "Marijn Haverbeke",
+            pages: 435,
+            read: true
+        },
+        {
+            title: "The Pragmatic Programmer",
+            author: "Dav Thomas,Andy Hunt",
+            pages: 497,
+            read: false
+        }
+    ];
+
+    defaultBooks.forEach(book => {
+        addBookToLibrary(book.title, book.author, book.pages, book.read);
+    });
+}
+
+seedLibrary();
+renderBooks();
 
 // Constructor
 function Book(id, title, author, pages, read) {
@@ -50,9 +93,26 @@ function renderBooks() {
 
     myLibrary.forEach(book => {
         const card = document.createElement('div');
+        const bookTextContainer = document.createElement('div');
+        const bookBtnsContainer = document.createElement('div');
+        card.classList.add('card');
+        bookTextContainer.classList.add('book-text');
+        bookBtnsContainer.classList.add('book-btns');
 
-        const info = document.createElement('p');
-        info.textContent = `${book.title} | ${book.author} | ${book.pages} pages | ${book.read ? 'Read' : 'Not Read'}`;
+        const titleInfo = document.createElement('p');
+        const authorInfo = document.createElement('p');
+        const pageInfo = document.createElement('p');
+        const status = document.createElement('p');
+
+        titleInfo.classList.add('title-info');
+        authorInfo.classList.add('author-info');
+        pageInfo.classList.add('page-info');
+    
+        titleInfo.textContent = book.title;
+        authorInfo.textContent = `by ${book.author}`;
+        pageInfo.textContent =  book.pages; 
+
+        status.textContent = book.read ? 'Read' : 'Not Read';
 
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
@@ -60,17 +120,24 @@ function renderBooks() {
             removeBook(book.id);
             renderBooks();
         });
-
+        
         const toggleBtn = document.createElement('button');
-        toggleBtn.textContent = 'Toggle Read';
+        toggleBtn.textContent = 'Read';
         toggleBtn.addEventListener('click', () => {
             toggleRead(book.id);
             renderBooks();
         });
-
-        card.appendChild(info);
-        card.appendChild(deleteBtn);
-        card.appendChild(toggleBtn);
+        
+        deleteBtn.classList.add('delete-btn');
+        toggleBtn.classList.add('checked-btn');
+        bookTextContainer.appendChild(titleInfo);
+        bookTextContainer.appendChild(authorInfo);
+        bookTextContainer.appendChild(pageInfo);
+        bookTextContainer.appendChild(status);
+        bookBtnsContainer.appendChild(deleteBtn);
+        bookBtnsContainer.appendChild(toggleBtn);
+        card.appendChild(bookTextContainer);
+        card.appendChild(bookBtnsContainer);
 
         container.appendChild(card);
     });
@@ -78,7 +145,6 @@ function renderBooks() {
 
 // Submit event
 submitBtn.addEventListener('click', function (e) {
-    e.preventDefault();
 
     const title = titleInput.value.trim();
     const author = authorInput.value.trim();
@@ -90,6 +156,7 @@ submitBtn.addEventListener('click', function (e) {
     addBookToLibrary(title, author, pages, read);
 
     renderBooks();
+    dialog.close();
 
     // clear inputs
     titleInput.value = '';
