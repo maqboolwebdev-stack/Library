@@ -7,16 +7,26 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form>
-      <input class="title" placeholder="Title" />
+
+    <div class="header">
+      <button class="add-btn" popovertarget="my-form" ><span><img src="images/plus-solid-full.svg" alt=""></span>Add Book</button>
+    </div>
+
+    <dialog id="my-form" popover>
+      
+        <input class="title" placeholder="Title" />
       <input class="author" placeholder="Author" />
       <input class="page" type="number" placeholder="Pages" />
       <label>
-        Read:
+       Read:
         <input class="status" type="checkbox" />
       </label>
-      <button class="submit-btn">Add Book</button>
-    </form>
+      <div class="btn-container">
+        <button popovertarget="my-form" popovertargetaction="hide" class="close-btn">Close</button>
+        <button class="submit-btn">Submit</button>
+      </div>
+
+  </dialog>
 
     <div class="books-container"></div>
 
