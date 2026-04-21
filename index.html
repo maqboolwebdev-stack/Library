@@ -1,15 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form>
+      <input class="title" placeholder="Title" />
+      <input class="author" placeholder="Author" />
+      <input class="page" type="number" placeholder="Pages" />
+      <label>
+        Read:
+        <input class="status" type="checkbox" />
+      </label>
+      <button class="submit-btn">Add Book</button>
+    </form>
 
+    <div class="books-container"></div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
