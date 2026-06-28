@@ -97,6 +97,11 @@ input:focus {
     color: rgb(51, 50, 50);
 }
 
+input:not(:placeholder-shown) {
+    color: rgb(51, 50, 50);
+}
+
+
 .btn-container {
     display: flex;
 }
