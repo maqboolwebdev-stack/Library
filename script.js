@@ -5,6 +5,8 @@ const statusInput = document.querySelector('.status');
 const submitBtn = document.querySelector('.submit-btn');
 const container = document.querySelector('.books-container');
 const dialog = document.querySelector('dialog');
+const addBtn = document.querySelector('.add-btn');
+const closeBtn = document.querySelector('.close-btn');
 
 const myLibrary = [];
 
@@ -143,9 +145,20 @@ function renderBooks() {
     });
 }
 
+function closeDialog() {
+    dialog.close()
+}
+
+function openDialog() {
+    dialog.showModal()
+}
+
+addBtn.addEventListener('click', openDialog);
+closeBtn.addEventListener('click', closeDialog);
+
 // Submit event
 submitBtn.addEventListener('click', function (e) {
-
+    
     const title = titleInput.value.trim();
     const author = authorInput.value.trim();
     const pages = Number(pageInput.value);
@@ -156,7 +169,7 @@ submitBtn.addEventListener('click', function (e) {
     addBookToLibrary(title, author, pages, read);
 
     renderBooks();
-    dialog.close();
+    closeDialog(); //  close the dialog after submission
 
     // clear inputs
     titleInput.value = '';
