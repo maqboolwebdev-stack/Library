@@ -7,6 +7,7 @@ const container = document.querySelector('.books-container');
 const dialog = document.querySelector('dialog');
 const addBtn = document.querySelector('.add-btn');
 const closeBtn = document.querySelector('.close-btn');
+const form = document.querySelector('form');
 
 const myLibrary = [];
 
@@ -157,8 +158,9 @@ addBtn.addEventListener('click', openDialog);
 closeBtn.addEventListener('click', closeDialog);
 
 // Submit event
-submitBtn.addEventListener('click', function (e) {
-    
+
+function handleSubmit() {
+
     const title = titleInput.value.trim();
     const author = authorInput.value.trim();
     const pages = Number(pageInput.value);
@@ -176,4 +178,39 @@ submitBtn.addEventListener('click', function (e) {
     authorInput.value = '';
     pageInput.value = '';
     statusInput.checked = false;
+
+}
+
+submitBtn.addEventListener('click', handleSubmit);
+
+dialog.addEventListener('keydown', function(e) {
+    if(e.key === 'Enter') {
+        handleSubmit();
+    }
 });
+
+dialog.addEventListener('keydown', function(e) {
+    if(e.key === 'Escape') {
+        closeDialog();
+    }
+});
+
+//  Pressing 'Enter' will move the focus to the next input.
+
+  form.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      const currentInput = event.target;
+
+      if (currentInput.tagName === 'INPUT' && currentInput.value.trim() !== '') {
+        e.preventDefault(); 
+
+        const inputs = Array.from(form.querySelectorAll('input'));
+        const currentIndex = inputs.indexOf(currentInput);
+        const nextInput = inputs[currentIndex + 1];
+
+        if (nextInput) {
+          nextInput.focus();
+        }
+      }
+    }
+  });
