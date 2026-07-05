@@ -71,7 +71,7 @@ Book.prototype.toggleRead = function () {
 function addBookToLibrary(title, author, pages, read) {
     const id = crypto.randomUUID();
     const book = new Book(id, title, author, pages, read);
-    myLibrary.push(book);
+    myLibrary.unshift(book);
 }
 
 // Remove book
