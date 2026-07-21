@@ -1,3 +1,76 @@
+class Book {
+  #id;
+  #title;
+  #author;
+  #pages;
+  #read;
+  #color;
+
+  constructor(id, title, author, pages, read) {
+    this.#id = id;
+    this.#title = title;
+    this.#author = author;
+    this.#pages = pages;
+    this.#read = read;
+    this.#color = colorGenerator();
+  }
+
+  // Getters
+
+  get id() {
+    return this.#id;
+  }
+
+  get title() {
+    return this.#title;
+  }
+
+  get author() {
+    return this.#author;
+  }
+
+  get pages() {
+    return this.#pages;
+  }
+
+  get read() {
+    return this.#read;
+  }
+
+  get color() {
+    return this.#color;
+  }
+
+  // Setters
+
+  set id(id) {
+    this.#id = id;
+  }
+
+  set title(title) {
+    this.#title = title;
+  }
+
+  set author(author) {
+    this.#author = author;
+  }
+
+  set pages(pages) {
+    this.#pages = pages;
+  }
+
+  set read(read) {
+    this.#read = read;
+  }
+
+  // Toggle read status
+
+  toggleRead() {
+    this.#read = !this.#read;
+  }
+}
+
+// DOM Elements
 const titleInput = document.querySelector('.title');
 const authorInput = document.querySelector('.author');
 const pageInput = document.querySelector('.page');
@@ -64,20 +137,11 @@ function colorGenerator() {
   return `hsla(${hue}, ${saturation}, ${lightness}, ${alpha})`;
 }
 
-// Constructor
-function Book(id, title, author, pages, read) {
-  this.id = id;
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.color = colorGenerator();
-}
 
 // Prototype method (toggle read)
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-};
+// Book.prototype.toggleRead = function () {
+//   this.read = !this.read;
+// };
 
 // Add book
 function addBookToLibrary(title, author, pages, read) {
