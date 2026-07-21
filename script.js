@@ -137,12 +137,6 @@ function colorGenerator() {
   return `hsla(${hue}, ${saturation}, ${lightness}, ${alpha})`;
 }
 
-
-// Prototype method (toggle read)
-// Book.prototype.toggleRead = function () {
-//   this.read = !this.read;
-// };
-
 // Add book
 function addBookToLibrary(title, author, pages, read) {
   const id = crypto.randomUUID();
