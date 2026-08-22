@@ -161,11 +161,6 @@ button {
     transition: all 0.2s ease;
 }
 
-.card:hover {
-    transform: scale(1.01);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
 .book-text {
     flex: 1;
     display: flex;
@@ -236,7 +231,7 @@ button {
 
 .delete-btn:active,
 .checked-btn:active {
-    transform: scale(0.97);
+    transform: scale(0.99);
 }
 
 /* Form validation styles */
