@@ -1,3 +1,5 @@
+import { validateTitle, validateAuthor, validatePage } from './utility.js';
+
 class Book {
   #id;
   #title;
@@ -81,6 +83,11 @@ const dialog = document.querySelector('dialog');
 const addBtn = document.querySelector('.add-btn');
 const closeBtn = document.querySelector('.close-btn');
 const form = document.querySelector('form');
+const titleError = document.querySelector('#title-error');
+const authorError = document.querySelector('#author-error');
+const pageError = document.querySelector('#page-error');
+
+export { titleInput, titleError, authorError, authorInput, pageInput, pageError };
 
 const myLibrary = [];
 
@@ -219,6 +226,16 @@ function renderBooks() {
 
 function closeDialog() {
   dialog.close();
+  form.reset();
+
+  [titleInput,authorInput,pageInput].forEach(input => {
+    input.classList.remove('valid', 'invalid');
+  });
+
+  [titleError,authorError,pageError].forEach(error => {
+    error.textContent = '';
+  });
+
 }
 
 function openDialog() {
@@ -250,11 +267,10 @@ function handleSubmit() {
   statusInput.checked = false;
 }
 
-submitBtn.addEventListener('click', handleSubmit);
 
 dialog.addEventListener('keydown', function (e) {
   if (e.key === 'Enter') {
-    handleSubmit();
+   handleSubmit();
   }
 });
 
@@ -283,3 +299,18 @@ form.addEventListener('keydown', function (e) {
     }
   }
 });
+
+titleInput.addEventListener('input', validateTitle);
+authorInput.addEventListener('input', validateAuthor);
+pageInput.addEventListener('input', validatePage);
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  validateTitle();
+  validateAuthor();
+  validatePage();
+
+  console.log('clicked');
+  handleSubmit();
+})

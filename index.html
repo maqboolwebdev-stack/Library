@@ -14,24 +14,27 @@
 
     <dialog id="my-form">
       
-      <form action="">
-        <input class="title" placeholder="Title" />
-        <input class="author" placeholder="Author" />
-        <input class="page" type="number" placeholder="Pages" />
+      <form novalidate>
+        <input class="title" placeholder="Title" required/>
+        <span class="error-message" id="title-error"></span>
+        <input class="author" placeholder="Author" required />
+        <span class="error-message" id="author-error"></span>
+        <input class="page" type="number" placeholder="Pages" required min="1" />
+        <span class="error-message" id="page-error"></span>
         <label>
           Read:
           <input class="status" type="checkbox" />
         </label>
+        <div class="btn-container">
+          <button type="button" class="close-btn">Close</button>
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+        
       </form>
-      <div class="btn-container">
-        <button class="close-btn">Close</button>
-        <button class="submit-btn">Submit</button>
-      </div>
-
   </dialog>
 
     <div class="books-container"></div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
