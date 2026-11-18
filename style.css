@@ -170,16 +170,16 @@ button {
 }
 
 .books-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
-  place-items: center;
-  place-content: center;
   padding: clamp(1rem, 4vw, 3rem);
 }
 
 .card {
-  width: 100%;
+  flex: 1 1 280px;
+  max-width: 340px;
   min-height: 340px;
   display: flex;
   flex-direction: column;
