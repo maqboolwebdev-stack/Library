@@ -58,8 +58,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 4em;
-  padding-bottom: 2em;
+  padding: 4em 0rem 2em 0em;
   position: sticky;
   top: 0px;
   z-index: 10;
@@ -93,6 +92,18 @@ label {
 }
 .add-btn:active {
   transform: scale(1.01);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 3em 0em 1.5em 0em;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    padding: 2em 0em 1em 0em;
+  }
 }
 
 input {
