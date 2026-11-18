@@ -337,6 +337,5 @@ form.addEventListener('submit', function (e) {
   validateAuthor();
   validatePage();
 
-  console.log('clicked');
   handleSubmit();
 });
