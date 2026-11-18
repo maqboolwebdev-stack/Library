@@ -1,242 +1,255 @@
 :root {
-    --primary-clr: hsl(168, 3%, 70%);
-    --input-bg: hsla(0, 0%, 93%, 0.314);
-    --transition: all .15s ease;
+  --primary-clr: hsl(168, 3%, 70%);
+  --input-bg: hsla(0, 0%, 93%, 0.314);
+  --transition: all 0.15s ease;
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html,body {
-    height: 100vh;
+html,
+body {
+  min-height: 100vh;
 }
 
 body {
-    /* display: flex; */
-    /* flex-direction: column; */
-    font-family: system-ui, -apple-system, sans-serif;
+  /* display: flex; */
+  /* flex-direction: column; */
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
- ::backdrop {
-     backdrop-filter: blur(2px);
-     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+::backdrop {
+  backdrop-filter: blur(2px);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 dialog {
-    margin: auto;
-    position: absolute;
-    border: none;
-    border-radius: 5px;
-    min-height: 30%;
-    max-width: 400px;
-    width: 80%;
-    padding: 2em;
-    border-radius: 1em;
-    transition: var(--transition);
-    box-shadow: hsla(210, 8%, 62%, 0.2) 0px 8px 24px;
+  margin: auto;
+  position: absolute;
+  border: none;
+  border-radius: 5px;
+  min-height: 30%;
+  max-width: 400px;
+  width: 80%;
+  padding: 2em;
+  border-radius: 1em;
+  transition: var(--transition);
+  box-shadow: hsla(210, 8%, 62%, 0.2) 0px 8px 24px;
 }
 
-button,input {
-    margin: auto;
-    display: block;
+button,
+input {
+  margin: auto;
+  display: block;
 }
 
 label {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 
 .header {
-    border-bottom: 1px solid #ebe6e6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 4em;
-    padding-bottom: 2em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4em;
+  padding-bottom: 2em;
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .header,
 .books-container {
-    width: 100%;
-    max-width: 1200px;
-    min-width: 80%;
-    margin-inline: auto;
-
+  width: 100%;
+  max-width: 1200px;
+  min-width: 80%;
+  margin-inline: auto;
 }
-.add-btn img{
-    height: 1em;
-    vertical-align: top;
+.add-btn img {
+  height: 1em;
+  vertical-align: top;
 }
 
 .add-btn {
-    font-size: clamp(1rem, 5vw, 1.5rem);
-    border: none;
-    padding: .5em 2em;
-    border-radius: 2px;
-    background-color: #fff;
-    border: 1px solid orange;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  border: none;
+  padding: 0.5em 2em;
+  border-radius: 2px;
+  background-color: transparent;
+  border: 1px solid orange;
 }
 
-.add-btn:hover {background-color: rgb(240, 226, 200);}
-.add-btn:active {transform: scale(1.01);}
+.add-btn:hover {
+  background-color: rgb(240, 226, 200);
+}
+.add-btn:active {
+  transform: scale(1.01);
+}
 
 input {
-    display: block;
-    outline: none;
-    border: none;
-    caret-color: var(--primary-clr);
-    color: var(--primary-clr);
-    transition: var(--transition);
-    width: 100%;
-    padding: .4em;
-    font-size: 1.5rem;
-    border-radius: 4px;
+  display: block;
+  outline: none;
+  border: none;
+  caret-color: var(--primary-clr);
+  color: var(--primary-clr);
+  transition: var(--transition);
+  width: 100%;
+  padding: 0.4em;
+  font-size: 1.5rem;
+  border-radius: 4px;
 }
 
 .status {
-    margin-top: .3em;
+  margin-top: 0.3em;
 }
 
 input::placeholder {
-    color: var(--primary-clr);
+  color: var(--primary-clr);
 }
 
 input:focus {
-    background-color: var(--input-bg);
-    color: rgb(51, 50, 50);
+  background-color: var(--input-bg);
+  color: rgb(51, 50, 50);
 }
 
 input:not(:placeholder-shown) {
-    color: rgb(51, 50, 50);
+  color: rgb(51, 50, 50);
 }
 
-
 .btn-container {
-    display: flex;
+  display: flex;
 }
 
 button {
-    transition: var(--transition);
-    cursor: pointer;
-    letter-spacing: 1.2px;
+  transition: var(--transition);
+  cursor: pointer;
+  letter-spacing: 1.2px;
 }
 
 .btn-container button {
-    padding: .5em 1em;
+  padding: 0.5em 1em;
 }
 
 .submit-btn {
-    background-color: transparent;
-    color: darkgreen;
-    border: none;
+  background-color: transparent;
+  color: darkgreen;
+  border: none;
 }
 
 .submit-btn:hover {
-    background-color: rgba(188, 241, 195, 0.308);
+  background-color: rgba(188, 241, 195, 0.308);
 }
 .close-btn:hover {
-    background-color: rgba(248, 201, 201, 0.308);
+  background-color: rgba(248, 201, 201, 0.308);
 }
 
 .close-btn {
-    background-color: transparent;
-    border: none;
-    color: rgb(180, 59, 59);
+  background-color: transparent;
+  border: none;
+  color: rgb(180, 59, 59);
 }
 
 .books-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
-    gap: 1.5rem;
-    place-items: center;
-    place-content: center;
-    padding: clamp(1rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+  place-items: center;
+  place-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
 }
 
 .card {
-    width: 100%;
-    min-height: 340px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.25rem;
-    border-radius: .5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: all 0.2s ease;
+  width: 100%;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 }
 
 .book-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.8rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.8rem;
 }
 
 .title-info {
-    font-size: clamp(1.2rem, 2vw, 1.4rem);
-    font-weight: 700;
-    line-height: 1.3;
-    margin-top: 0.5rem;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 0.5rem;
 }
 
 .author-info {
-    font-size: 1rem;
-    opacity: 0.85;
-    font-style: italic;
+  font-size: 1rem;
+  opacity: 0.85;
+  font-style: italic;
 }
 
 .page-info {
-    font-size: 0.9rem;
-    margin-top: auto;
-    background-color: rgba(255, 255, 255, 0.35);
-    padding: 0.3em 0.8em;
-    border-radius: 20px;
-    font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: auto;
+  background-color: rgba(255, 255, 255, 0.35);
+  padding: 0.3em 0.8em;
+  border-radius: 20px;
+  font-weight: 600;
 }
 
 .book-btns {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1.2rem;
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
 }
 
 .delete-btn,
 .checked-btn {
-    flex: 1;
-    padding: 0.6em 1em;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.1s ease;
+  flex: 1;
+  padding: 0.6em 1em;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.1s ease;
 }
 
 .delete-btn {
-    background-color: rgba(220, 38, 38, 0.15);
-    color: #b91c1c;
+  background-color: rgba(220, 38, 38, 0.15);
+  color: #b91c1c;
 }
 
 .checked-btn {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: #1f2937;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #1f2937;
 }
 
 .delete-btn:hover {
-    background-color: #dc2626;
-    color: #ffffff;
+  background-color: #dc2626;
+  color: #ffffff;
 }
 
 .checked-btn:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .delete-btn:active,
 .checked-btn:active {
-    transform: scale(0.99);
+  transform: scale(0.99);
 }
 
 /* Form validation styles */
@@ -244,8 +257,8 @@ button {
 .error-message {
   color: rgb(233, 23, 23);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: .8rem;
-  margin: .2rem;
+  font-size: 0.8rem;
+  margin: 0.2rem;
   font-weight: 100;
 }
 
