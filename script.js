@@ -1,4 +1,5 @@
 import { validateTitle, validateAuthor, validatePage } from './utility.js';
+import { loadBooks, saveBooks } from './libraryStorage.js';
 
 class Book {
   #id;
@@ -8,13 +9,13 @@ class Book {
   #read;
   #color;
 
-  constructor(id, title, author, pages, read) {
+  constructor(id, title, author, pages, read, color = colorGenerator()) {
     this.#id = id;
     this.#title = title;
     this.#author = author;
     this.#pages = pages;
     this.#read = read;
-    this.#color = colorGenerator();
+    this.#color = color;
   }
 
   // Getters
@@ -87,7 +88,14 @@ const titleError = document.querySelector('#title-error');
 const authorError = document.querySelector('#author-error');
 const pageError = document.querySelector('#page-error');
 
-export { titleInput, titleError, authorError, authorInput, pageInput, pageError };
+export {
+  titleInput,
+  titleError,
+  authorError,
+  authorInput,
+  pageInput,
+  pageError,
+};
 
 const myLibrary = [];
 
@@ -130,7 +138,24 @@ function seedLibrary() {
   });
 }
 
-seedLibrary();
+const savedBooks = loadBooks();
+if (savedBooks === null) {
+  seedLibrary();
+  saveBooks(myLibrary);
+} else {
+  savedBooks.forEach((book) => {
+    myLibrary.push(
+      new Book(
+        book.id,
+        book.title,
+        book.author,
+        book.pages,
+        book.read,
+        book.color,
+      ),
+    );
+  });
+}
 renderBooks();
 
 // Color generator
@@ -199,6 +224,7 @@ function renderBooks() {
     deleteBtn.textContent = 'Delete';
     deleteBtn.addEventListener('click', () => {
       removeBook(book.id);
+      saveBooks(myLibrary);
       renderBooks();
     });
 
@@ -206,6 +232,7 @@ function renderBooks() {
     toggleBtn.textContent = 'Read';
     toggleBtn.addEventListener('click', () => {
       toggleRead(book.id);
+      saveBooks(myLibrary);
       renderBooks();
     });
 
@@ -228,14 +255,13 @@ function closeDialog() {
   dialog.close();
   form.reset();
 
-  [titleInput,authorInput,pageInput].forEach(input => {
+  [titleInput, authorInput, pageInput].forEach((input) => {
     input.classList.remove('valid', 'invalid');
   });
 
-  [titleError,authorError,pageError].forEach(error => {
+  [titleError, authorError, pageError].forEach((error) => {
     error.textContent = '';
   });
-
 }
 
 function openDialog() {
@@ -256,6 +282,7 @@ function handleSubmit() {
   if (!title || !author || !pages) return;
 
   addBookToLibrary(title, author, pages, read);
+  saveBooks(myLibrary);
 
   renderBooks();
   closeDialog(); //  close the dialog after submission
@@ -267,10 +294,9 @@ function handleSubmit() {
   statusInput.checked = false;
 }
 
-
 dialog.addEventListener('keydown', function (e) {
   if (e.key === 'Enter') {
-   handleSubmit();
+    handleSubmit();
   }
 });
 
@@ -313,4 +339,4 @@ form.addEventListener('submit', function (e) {
 
   console.log('clicked');
   handleSubmit();
-})
+});
